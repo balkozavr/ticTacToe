@@ -1,0 +1,39 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+:root {
+  --hue: 225;
+  --suit: 80%, 50%;
+  --bg-transition: background-color 0.3s ease;
+  --main-grid: white;
+  --O-hue: calc(var(--hue) - 50);
+  --X-hue: calc(var(--hue) + 130);
+  --O: hsl(var(--O-hue), var(--suit));
+  --X: hsl(var(--X-hue), var(--suit));
+  --O-dark: hsl(var(--O-hue), 50%, 40%);
+  --X-dark: hsl(var(--X-hue), 50%, 40%);
+  --highlight: hsl(var(--hue), 70%, 40%);
+  --background: hsl(var(--hue), 20%, 7%);
+  --active-board: hsl(var(--hue), 50%, 17%);
+}
+body {
+  background-color: var(--background);
+  height: 100vh;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+button {
+  font: inherit;
+}
+.game {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+}

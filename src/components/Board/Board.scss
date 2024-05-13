@@ -1,0 +1,113 @@
+:root {
+  --grid-border: .25vw solid var(--main-grid);
+}
+.board {
+  display: flex;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+  align-items: center;
+  border: var(--grid-border);
+  position: relative;
+  transition: var(--bg-transition);
+}
+.board-active .grid {
+  background-color: var(--active-board);
+}
+.board0,
+.board1,
+.board2 {
+  border-top-color: transparent;
+}
+.board0,
+.board3,
+.board6 {
+  border-left-color: transparent;
+}
+.board2,
+.board5,
+.board8 {
+  border-right-color: transparent;
+}
+.board6,
+.board7,
+.board8 {
+  border-bottom-color: transparent;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 85%;
+  padding: 2.5%;
+  gap: 1.5%;
+  aspect-ratio: 1 / 1;
+}
+.btn {
+  background: transparent;
+  border: .15vw solid white;
+  border-radius: .5vw;
+  color: rgb(255, 255, 255);
+  transition: var(--bg-transition);
+  text-transform: uppercase;
+  outline: none;
+  &:focus-visible {
+    background-color: var(--highlight);
+  }
+}
+.board-active .cell {
+  cursor: pointer;
+  &:hover {
+    background-color: var(--highlight);
+  }
+}
+.btn-reset {
+  cursor: pointer;
+  font-size: 1.25vw;
+  padding: 0.5rem 1rem;
+  transition: font-size 0.5s ease, var(--bg-transition);
+  &:hover {
+    background-color: var(--highlight);
+  }
+  &:focus-visible {
+    outline: auto;
+  }
+  &-big {
+    font-size: 200%;
+  }
+}
+
+.board-win-container {
+  width: 90%;
+  aspect-ratio: 1 / 1;
+  gap: 1.5%;
+  display: grid;
+  place-items: center;
+  border-radius: 1vw;
+  transition: var(--bg-transition);
+}
+.win-o {
+  background-color: var(--O-dark);
+  color: var(--O);
+}
+.win-x {
+  background-color: var(--X-dark);
+  color: (var(--X));
+}
+
+.board-winner-x .board-win-container {
+  background-color: var(--X);
+}
+.board-winner-o .board-win-container {
+  background-color: (var(--O));
+}
+.board-win {
+  line-height: 0;
+  transform: translateY(-1.25vw);
+  font-size: 10vw;
+  color: white;
+  user-select: none;
+}
+.win-draw .board-win {
+  font-size: 7vw;
+  transform: translateY(-.5vw);
+}
