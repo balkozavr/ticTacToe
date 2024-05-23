@@ -1,6 +1,6 @@
 import { useState } from "react";
-import ExpandedGrid from "./components/ExpandedGrid/ExpandedGrid";
-import NormalGrid from "./components/NormalGrid/NormalGrid";
+import { ExpandedGrid } from "./components/ExpandedGrid/ExpandedGrid";
+import { NormalGrid } from "./components/NormalGrid/NormalGrid";
 import "./App.scss";
 
 const App = () => {
@@ -10,8 +10,8 @@ const App = () => {
       {menu === "menu" && (
         <>
           <h1 className="main-title">
-            <span style={{ color: "var(--X)" }}>Tic</span> Tac{" "}
-            <span style={{ color: "var(--O)" }}>Toe</span>
+            <span className="main-title-X">Tic</span> Tac{" "}
+            <span className="main-title-O">Toe</span>
           </h1>
           <h2 className="subtitle">Choose the game mode:</h2>
           <div className="btn-container">

@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import Board from "../Board/Board";
+import { Board } from "../Board/Board";
 import "./ExpandedGrid.scss";
 import { initializeExpandedGrid } from "../../helpers/initializeExpandedGrid";
 import { checkTurn } from "../../helpers/checkTurn";
 import { winningScenarios } from "../../helpers/winningScenarios";
 import Grid from "../Grid/Grid";
 
-const ExpandedGrid = () => {
+export const ExpandedGrid = () => {
   const [mainGrid, setMainGrid] = useState(initializeExpandedGrid(9));
   const resetTheGame = () => {
     setMainGrid(initializeExpandedGrid(9));
@@ -76,4 +76,3 @@ const ExpandedGrid = () => {
     </Grid>
   );
 };
-export default ExpandedGrid;

@@ -1,8 +1,8 @@
 import "./Board.scss";
-import Cell from "../Cell/Cell";
+import { Cell } from "../Cell/Cell";
 import { useHandleExpandedClick } from "../../helpers/useHandleExpandedClick";
 
-const Board = ({ gameState, setGameState, boardIndex, ...props }) => {
+export const Board = ({ gameState, setGameState, boardIndex, ...props }) => {
   const handleClick = (boardIndex, cellIndex) => {
     useHandleExpandedClick(gameState, setGameState, boardIndex, cellIndex);
   };
@@ -31,4 +31,3 @@ const Board = ({ gameState, setGameState, boardIndex, ...props }) => {
     </div>
   );
 };
-export default Board;

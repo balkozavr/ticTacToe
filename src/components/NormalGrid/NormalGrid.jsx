@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import Cell from "../Cell/Cell";
+import { Cell } from "../Cell/Cell";
 import "./NormalGrid.scss";
 import { useHandleNormalClick } from "../../helpers/useHandleNormalClick";
 import { checkTurn } from "../../helpers/checkTurn";
 import Grid from "../Grid/Grid";
 import { initializeNormalGrid } from "../../helpers/initializeNormalGrid";
 
-const NormalGrid = () => {
+export const NormalGrid = () => {
   const [board, setBoard] = useState(initializeNormalGrid(9));
 
   const handleClick = (cellIndex) =>
@@ -69,4 +69,3 @@ const NormalGrid = () => {
     </>
   );
 };
-export default NormalGrid;
