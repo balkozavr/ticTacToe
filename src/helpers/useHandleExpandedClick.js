@@ -1,6 +1,5 @@
-import { checkTurn } from "../helpers/checkTurn";
-import useGameObjectState from "./useGameObjectState";
-import { winningScenarios } from "../helpers/winningScenarios";
+import { checkTurn } from "./checkTurn";
+import { winningScenarios } from "./winningScenarios";
 
 export const useHandleExpandedClick = (
   gameState,
@@ -8,8 +7,12 @@ export const useHandleExpandedClick = (
   boardIndex,
   cellIndex
 ) => {
-  const changeState = (targetName, targetValue) =>
-    useGameObjectState(gameState, targetName, targetValue);
+  const changeState = (targetName, targetValue) => {
+    return {
+      ...gameState,
+      [targetName]: targetValue,
+    };
+  };
 
   //if we have a winner, we don't handle clicks anymore. we don't have to check for the boards winners, because there is conditional rendering in mainGrid component
   if (gameState.mainWinner) return;
@@ -19,7 +22,7 @@ export const useHandleExpandedClick = (
   let grid = gridObj.grid;
   if (grid[cellIndex]) return;
   let newGrid = grid;
-  grid[cellIndex] = checkTurn(gameState);
+  grid[cellIndex] = checkTurn(gameState.turnCount);
   setGameState(changeState(grid, newGrid));
 
   //incrementing turnCount

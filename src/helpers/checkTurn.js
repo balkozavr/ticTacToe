@@ -1,3 +1,3 @@
-export const checkTurn = (gameState) => {
-  return gameState?.turnCount % 2 === 0 ? "x" : "o";
+export const checkTurn = (turnCount) => {
+  return turnCount % 2 === 0 ? "x" : "o";
 };

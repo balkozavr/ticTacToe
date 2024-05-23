@@ -1,6 +1,6 @@
 import "./Board.scss";
 import Cell from "../Cell/Cell";
-import { useHandleExpandedClick } from "../../hooks/useHandleExpandedClick";
+import { useHandleExpandedClick } from "../../helpers/useHandleExpandedClick";
 
 const Board = ({ gameState, setGameState, boardIndex, ...props }) => {
   const handleClick = (boardIndex, cellIndex) => {
@@ -23,7 +23,9 @@ const Board = ({ gameState, setGameState, boardIndex, ...props }) => {
         </div>
       ) : (
         <div className={`board-win-container win-${board.winner}`}>
-          <div className="board-win">{board.winner !== 'draw' ? board.winner : '∅'}</div>
+          <div className="board-win">
+            {board.winner !== "draw" ? board.winner : "∅"}
+          </div>
         </div>
       )}
     </div>

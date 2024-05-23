@@ -1,19 +1,18 @@
 import { useEffect, useState } from "react";
 import Cell from "../Cell/Cell";
 import "./NormalGrid.scss";
-import { useHandleNormalClick } from "../../hooks/useHandleNormalClick";
+import { useHandleNormalClick } from "../../helpers/useHandleNormalClick";
 import { checkTurn } from "../../helpers/checkTurn";
 import Grid from "../Grid/Grid";
-import { makeNormalGrid } from "../../helpers/makeNormalGrid";
+import { initializeNormalGrid } from "../../helpers/initializeNormalGrid";
 
 const NormalGrid = () => {
-  const [board, setBoard] = useState(makeNormalGrid());
+  const [board, setBoard] = useState(initializeNormalGrid(9));
 
   const handleClick = (cellIndex) =>
     useHandleNormalClick(board, setBoard, cellIndex);
 
   useEffect(() => {
-    
     const handleKeyDown = (e) => {
       if (
         (e.keyCode >= 49 && e.keyCode <= 57) ||
@@ -30,10 +29,10 @@ const NormalGrid = () => {
   }, [handleClick]);
 
   const resetTheGame = () => {
-    setBoard(makeNormalGrid());
+    setBoard(initializeNormalGrid(9));
   };
 
-  const turn = checkTurn(board);
+  const turn = checkTurn(board.turnCount);
 
   return (
     <>

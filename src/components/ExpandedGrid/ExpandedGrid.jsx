@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
 import Board from "../Board/Board";
 import "./ExpandedGrid.scss";
-import { makeMainGrid } from "../../helpers/makeMainGrid";
+import { initializeExpandedGrid } from "../../helpers/initializeExpandedGrid";
 import { checkTurn } from "../../helpers/checkTurn";
 import { winningScenarios } from "../../helpers/winningScenarios";
 import Grid from "../Grid/Grid";
 
 const ExpandedGrid = () => {
-  const [mainGrid, setMainGrid] = useState(makeMainGrid());
-
+  const [mainGrid, setMainGrid] = useState(initializeExpandedGrid(9));
   const resetTheGame = () => {
-    setMainGrid(makeMainGrid());
+    setMainGrid(initializeExpandedGrid(9));
   };
 
   useEffect(() => {
@@ -41,9 +40,9 @@ const ExpandedGrid = () => {
         mainWinningCells: [],
       }));
     }
-  }, [mainGrid.boards]);
-  const turn = checkTurn(mainGrid);
-  
+  }, [mainGrid.boards, mainGrid.mainWinner]);
+  const turn = checkTurn(mainGrid.turnCount);
+
   return (
     <Grid
       gridType="expanded-grid"

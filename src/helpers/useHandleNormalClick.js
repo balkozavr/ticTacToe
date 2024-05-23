@@ -1,22 +1,21 @@
-import { checkTurn } from "../helpers/checkTurn";
-import useGameObjectState from "./useGameObjectState";
-import { winningScenarios } from "../helpers/winningScenarios";
+import { checkTurn } from "./checkTurn";
+import { winningScenarios } from "./winningScenarios";
 
-export const useHandleNormalClick = (
-  gameState,
-  setGameState,
-  cellIndex
-) => {
-  const changeState = (targetName, targetValue) =>
-    useGameObjectState(gameState, targetName, targetValue);
+export const useHandleNormalClick = (gameState, setGameState, cellIndex) => {
+  const changeState = (targetName, targetValue) => {
+    return {
+      ...gameState,
+      [targetName]: targetValue,
+    };
+  };
 
   if (gameState.grid[cellIndex]) return;
-  if(gameState.winner) return;
-  
+  if (gameState.winner) return;
+
   //updating the grid of small boards
   let grid = gameState.grid;
   let newGrid = grid;
-  grid[cellIndex] = checkTurn(gameState);
+  grid[cellIndex] = checkTurn(gameState.turnCount);
   setGameState(changeState(grid, newGrid));
 
   //incrementing turnCount
@@ -40,7 +39,7 @@ export const useHandleNormalClick = (
   }
 
   //check draw in a small board
-  if(gameState.turnCount === 8 && gameState.winningCells.length === 0) { 
+  if (gameState.turnCount === 8 && gameState.winningCells.length === 0) {
     setGameState(changeState("winner", "draw"));
   }
 };
