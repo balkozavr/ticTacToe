@@ -1,10 +1,10 @@
 import "./Board.scss";
 import { Cell } from "../Cell/Cell";
-import { useHandleExpandedClick } from "../../helpers/useHandleExpandedClick";
+import { handleExpandedGridClick } from "../../helpers/handleExpandedGridClick";
 
 export const Board = ({ gameState, setGameState, boardIndex, ...props }) => {
   const handleClick = (boardIndex, cellIndex) => {
-    useHandleExpandedClick(gameState, setGameState, boardIndex, cellIndex);
+    handleExpandedGridClick(gameState, setGameState, boardIndex, cellIndex);
   };
   const board = gameState.boards[boardIndex];
 
@@ -16,7 +16,7 @@ export const Board = ({ gameState, setGameState, boardIndex, ...props }) => {
             <Cell
               value={cell}
               key={index}
-              className={`btn cell` + `${cell ? ` cell-${cell}` : ""}`}
+              className={`cell` + `${cell ? ` cell-${cell}` : ""}`}
               onClick={() => board.active && handleClick(boardIndex, index)}
             />
           ))}

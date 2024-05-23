@@ -2,46 +2,40 @@ import { useState } from "react";
 import { ExpandedGrid } from "./components/ExpandedGrid/ExpandedGrid";
 import { NormalGrid } from "./components/NormalGrid/NormalGrid";
 import "./App.scss";
+import { Button } from "./components/UI/Button/Button";
 
-const App = () => {
+export const App = () => {
   const [menu, setMenu] = useState("menu");
   return (
     <div className="game">
       {menu === "menu" && (
         <>
           <h1 className="main-title">
-            <span className="main-title-X">Tic</span> Tac{" "}
+            <span className="main-title-X">Tic</span>
+            <span>Tac</span>
             <span className="main-title-O">Toe</span>
           </h1>
           <h2 className="subtitle">Choose the game mode:</h2>
           <div className="btn-container">
-            <button
-              className="btn btn-game-mode"
-              onClick={() => setMenu("normal")}
-            >
+            <Button btnType="btn-game-mode" onClick={() => setMenu("normal")}>
               Normal
-            </button>
-            <button
-              className="btn btn-game-mode"
-              onClick={() => setMenu("advanced")}
-            >
+            </Button>
+            <Button btnType="btn-game-mode" onClick={() => setMenu("advanced")}>
               Advanced
-            </button>
+            </Button>
           </div>
         </>
       )}
       {menu !== "menu" && (
-        <button
-          tabIndex={100}
-          className="btn btn-back"
+        <Button
+          btnType="btn-back"
           onClick={() => setMenu("menu")}
         >
           Back to menu
-        </button>
+        </Button>
       )}
       {menu === "advanced" && <ExpandedGrid />}
       {menu === "normal" && <NormalGrid />}
     </div>
   );
 };
-export default App;

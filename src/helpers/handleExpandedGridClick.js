@@ -1,11 +1,11 @@
 import { checkTurn } from "./checkTurn";
 import { winningScenarios } from "./winningScenarios";
 
-export const useHandleExpandedClick = (
+export const handleExpandedGridClick = (
   gameState,
   setGameState,
   boardIndex,
-  cellIndex
+  cellIndex,
 ) => {
   const changeState = (targetName, targetValue) => {
     return {
@@ -45,7 +45,7 @@ export const useHandleExpandedClick = (
                 winner: grid[a],
                 active: false,
               }
-            : board
+            : board,
         ),
       }));
       break;
@@ -64,7 +64,7 @@ export const useHandleExpandedClick = (
                 winner: "draw",
                 active: false,
               }
-            : board
+            : board,
         ),
       }));
     }
@@ -80,19 +80,19 @@ export const useHandleExpandedClick = (
             active: false,
           }
         : cellIndex === index
-        ? {
-            ...board,
-            active: true,
-          }
-        : gameState.boards[cellIndex].winningCells.length === 0
-        ? {
-            ...board,
-            active: false,
-          }
-        : {
-            ...board,
-            active: true,
-          }
+          ? {
+              ...board,
+              active: true,
+            }
+          : gameState.boards[cellIndex].winningCells.length === 0
+            ? {
+                ...board,
+                active: false,
+              }
+            : {
+                ...board,
+                active: true,
+              },
     ),
   }));
 };

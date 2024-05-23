@@ -1,45 +1,28 @@
 .main-title {
-	color: white;
-	text-align: center;
-	font-size: 9vw;
+  color: white;
+  text-align: center;
+  font-size: 9vw;
 }
+
 .subtitle {
-	color: white;
-	font-size: 3vw;
-	margin-bottom: 3vw;
-	font-weight: bold;
-	font-style: italic;
-	text-shadow: 5px 5px 0 var(--highlight);
+  color: white;
+  font-size: 3vw;
+  margin-bottom: 3vw;
+  font-weight: bold;
+  font-style: italic;
+  text-shadow: 5px 5px 0 var(--highlight);
 }
+
 .btn-container {
-	display: flex;
-	justify-content: center;
-	gap: 3vw;
+  display: flex;
+  justify-content: center;
+  gap: 3vw;
 }
-.btn-game-mode {
-	font-size: 3.5vw;
-	padding: 1rem 2rem;
-	cursor: pointer;
-	border-radius: 1vw;
-	&:hover {
-		background-color: var(--highlight);
-	}
-}
-.btn-back {
-	position: absolute;
-	padding: .5rem 1rem;
-	font-size: 1vw;
-	top: 2vw;
-	left: 2vw;
-	cursor: pointer;
-	border-radius: .25vw;
-	&:hover {
-		background-color: var(--highlight);
-	}
-}
+
 .main-title-X {
-	color: var(--X);
+  color: var(--X);
 }
+
 .main-title-O {
-	color: var(--O);
+  color: var(--O);
 }

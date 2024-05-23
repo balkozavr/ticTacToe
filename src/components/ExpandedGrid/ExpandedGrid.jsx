@@ -1,15 +1,21 @@
 import { useEffect, useState } from "react";
 import { Board } from "../Board/Board";
 import "./ExpandedGrid.scss";
-import { initializeExpandedGrid } from "../../helpers/initializeExpandedGrid";
+import { initializeGrid } from "../../helpers/initializeGrid";
 import { checkTurn } from "../../helpers/checkTurn";
 import { winningScenarios } from "../../helpers/winningScenarios";
-import Grid from "../Grid/Grid";
+import { Grid } from "../Grid/Grid";
+import { StateOfTheGame } from "../UI/StateOfTheGame/StateOfTheGame";
+import { Button } from "../UI/Button/Button";
+
+const GRID_SIZE = 9;
 
 export const ExpandedGrid = () => {
-  const [mainGrid, setMainGrid] = useState(initializeExpandedGrid(9));
+  const [mainGrid, setMainGrid] = useState(
+    initializeGrid(GRID_SIZE, "expanded"),
+  );
   const resetTheGame = () => {
-    setMainGrid(initializeExpandedGrid(9));
+    setMainGrid(initializeGrid(GRID_SIZE, "expanded"));
   };
 
   useEffect(() => {
@@ -41,6 +47,7 @@ export const ExpandedGrid = () => {
       }));
     }
   }, [mainGrid.boards, mainGrid.mainWinner]);
+
   const turn = checkTurn(mainGrid.turnCount);
 
   return (
@@ -73,6 +80,13 @@ export const ExpandedGrid = () => {
           />
         ))}
       </div>
+      <StateOfTheGame winner={mainGrid.mainWinner} turn={turn} />
+        <Button
+          btnType={"btn-reset" + (mainGrid.mainWinner ? ` btn-big` : "")}
+          onClick={resetTheGame}
+        >
+          Reset the game
+        </Button>
     </Grid>
   );
 };

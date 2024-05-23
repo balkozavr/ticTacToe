@@ -1,35 +1,52 @@
 import { useEffect, useState } from "react";
 import { Cell } from "../Cell/Cell";
 import "./NormalGrid.scss";
-import { useHandleNormalClick } from "../../helpers/useHandleNormalClick";
+import { handleNormalGridClick } from "../../helpers/handleNormalGridClick";
 import { checkTurn } from "../../helpers/checkTurn";
-import Grid from "../Grid/Grid";
-import { initializeNormalGrid } from "../../helpers/initializeNormalGrid";
+import { Grid } from "../Grid/Grid";
+import { initializeGrid } from "../../helpers/initializeGrid";
+import { checkWinningScenarios } from "../../helpers/checkWinningScenarios";
+import { StateOfTheGame } from "../UI/StateOfTheGame/StateOfTheGame";
+import { Button } from "../UI/Button/Button";
+
+const GRID_SIZE = 9;
 
 export const NormalGrid = () => {
-  const [board, setBoard] = useState(initializeNormalGrid(9));
+  const [board, setBoard] = useState(initializeGrid(GRID_SIZE, "normal"));
 
   const handleClick = (cellIndex) =>
-    useHandleNormalClick(board, setBoard, cellIndex);
+    handleNormalGridClick(board, setBoard, cellIndex);
+
+  useEffect(() => {
+    //check winner
+    const [newWinningCells, winner] = checkWinningScenarios(board.grid);
+    if (newWinningCells) {
+      setBoard((prev) => ({
+        ...prev,
+        winningCells: newWinningCells,
+        winner: winner,
+      }));
+    }
+    //check draw
+    if (board.turnCount === 9 && !board.winner) {
+      setBoard((prev) => ({ ...prev, winner: "draw" }));
+    }
+  }, [board.grid, board.winner, board.turnCount]);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (
-        (e.keyCode >= 49 && e.keyCode <= 57) ||
-        (e.keyCode >= 97 && e.keyCode <= 105)
-      ) {
-        handleClick(e.keyCode <= 57 ? e.keyCode - 49 : e.keyCode - 97);
+      if (e.key >= "1" && e.key <= "9") {
+        handleClick(e.key - 1);
       }
     };
-
     window.addEventListener("keydown", handleKeyDown);
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [handleClick]);
+  });
 
   const resetTheGame = () => {
-    setBoard(initializeNormalGrid(9));
+    setBoard(initializeGrid(GRID_SIZE, "normal"));
   };
 
   const turn = checkTurn(board.turnCount);
@@ -50,12 +67,12 @@ export const NormalGrid = () => {
               key={index}
               data-cell-number={index + 1}
               className={
-                `btn cell` +
+                `cell` +
                 `${cell || board.winner ? " cell-deac" : ""}` +
                 `${cell ? ` cell-${cell}` : ""}` +
                 `${
                   board.winner
-                    ? board.winningCells.includes(index)
+                    ? board.winningCells?.includes(index)
                       ? ` winning-cell winning-cell-${cell}`
                       : ``
                     : ""
@@ -65,6 +82,13 @@ export const NormalGrid = () => {
             />
           ))}
         </div>
+        <StateOfTheGame winner={board.winner} turn={turn} />
+        <Button
+          btnType={"btn-reset" + (board.winner ? ` btn-big` : "")}
+          onClick={resetTheGame}
+        >
+          Reset the game
+        </Button>
       </Grid>
     </>
   );

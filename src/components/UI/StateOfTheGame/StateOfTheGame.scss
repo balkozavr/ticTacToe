@@ -1,0 +1,21 @@
+.game-state {
+  color: white;
+  font-size: 2.5vw;
+  margin-top: 1%;
+	margin-bottom: 3%;
+  text-transform: capitalize;
+}
+
+span.state {
+  line-height: 0;
+  font-size: 3.5vw;
+  font-weight: bold;
+}
+
+.state-x {
+  color: var(--X);
+}
+
+.state-o {
+  color: var(--O);
+}

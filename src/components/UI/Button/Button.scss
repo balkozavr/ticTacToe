@@ -1,0 +1,47 @@
+.btn {
+  cursor: pointer;
+  background: transparent;
+  border: 0.15vw solid white;
+  color: rgb(255 255 255);
+  transition: var(--bg-transition);
+  text-transform: uppercase;
+  outline: none;
+
+  &:hover {
+    background-color: var(--highlight);
+  }
+
+  &:focus-visible {
+    background-color: var(--highlight);
+  }
+
+  &-game-mode {
+    font-size: 3.5vw;
+    padding: 1rem 2rem;
+    border-radius: 1vw;
+  }
+
+  &-back {
+    position: absolute;
+    padding: 0.5rem 1rem;
+    font-size: 1vw;
+    top: 2vw;
+    left: 2vw;
+    border-radius: 0.25vw;
+  }
+
+  &-reset {
+    font-size: 1.25vw;
+    padding: 0.5rem 1rem;
+    transition:
+      font-size 0.5s ease,
+      var(--bg-transition);
+
+    border-radius: 0.25rem;
+  }
+
+  &-big {
+    font-size: 200%;
+  }
+}
+

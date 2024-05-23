@@ -7,6 +7,7 @@
 	align-items: center;
 	flex-direction: column;
 }
+
 .main-grid {
 	width: 90%;
 	aspect-ratio: 1 / 1;
@@ -14,15 +15,17 @@
 	grid-template-columns: repeat(3, 1fr);
 	overflow: hidden;
 }
+
 .main-grid .grid {
 	gap: 3%;
 }
+
 .main-grid .cell {
 	border-radius: .5vw;
 	font-size: 2vw;
 }
 
-@media screen and (max-width: 1400px) {
+@media screen and (width <= 1400px) {
 	.expanded-grid {
 		width: 60%;
 	}

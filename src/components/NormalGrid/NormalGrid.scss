@@ -7,17 +7,21 @@
 	align-items: center;
 	flex-direction: column;
 }
+
 .grid {
 	gap: 3%;
 }
+
 .normal-grid .cell {
 	position: relative;
 	border-radius: 1vw;
 	font-size: 6vw;
 	cursor: pointer;
+
   &:not(.cell-deac):hover {
     background-color: var(--highlight);
   }
+
 	&::before {
 		position: absolute;
 		content: attr(data-cell-number);
@@ -27,18 +31,23 @@
 		left: 10%;
 	}
 }
+
 .normal-grid .cell-deac {
 	cursor: auto;
 }
+
 .winning-cell {
 	color: white;
 }
+
 .winning-cell-x {
 	background-color: var(--X);
 }
+
 .winning-cell-o {
 	background-color: var(--O);
 }
+
 .hint {
   color: white;
 	font-size: 1vw;
@@ -47,24 +56,8 @@
 	font-style: italic;
 	text-shadow: 5px 5px 0 var(--highlight);
 }
-.game-state {
-  color: white;
-  font-size: 2.5vw;
-  margin: 2.5% 0;
-  text-transform: capitalize;
-}
-span.state {
-  line-height: 0;
-  font-size: 3.5vw;
-  font-weight: bold;
-}
-.state-x {
-  color: var(--X);
-}
-.state-o {
-  color: var(--O);
-}
-@media screen and (max-width: 1400px) {
+
+@media screen and (width <= 1400px) {
 	.normal-grid {
 		width: 60%;
 	}
