@@ -17,7 +17,7 @@
   grid-template-columns: repeat(3, 1fr);
   width: 85%;
   padding: 2.5%;
-  gap: 1.5%;
+  gap: 3%;
   aspect-ratio: 1 / 1;
 }
 
@@ -49,7 +49,7 @@
   border-bottom-color: transparent;
 }
 
-.board-win-container {
+.board-win {
   width: 90%;
   aspect-ratio: 1 / 1;
   gap: 1.5%;
@@ -69,15 +69,15 @@
   color: (var(--X));
 }
 
-.board-winner-x .board-win-container {
+.board-winner-x .board-win {
   background-color: var(--X);
 }
 
-.board-winner-o .board-win-container {
+.board-winner-o .board-win {
   background-color: (var(--O));
 }
 
-.board-win {
+.board-win-symbol {
   line-height: 0;
   transform: translateY(-1.25vw);
   font-size: 10vw;
@@ -85,7 +85,7 @@
   user-select: none;
 }
 
-.win-draw .board-win {
+.win-draw .board-win-symbol {
   font-size: 7vw;
   transform: translateY(-0.5vw);
 }

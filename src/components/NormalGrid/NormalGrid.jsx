@@ -8,6 +8,7 @@ import { checkWinningScenarios } from "../../helpers/checkWinningScenarios";
 import { StateOfTheGame } from "../UI/StateOfTheGame/StateOfTheGame";
 import { Button } from "../UI/Button/Button";
 import { useHandleKeyPresses } from "../../hooks/useHandleKeyPresses";
+import clsx from "clsx";
 
 const GRID_SIZE = 9;
 
@@ -44,32 +45,28 @@ export const NormalGrid = () => {
   return (
     <>
       <p className="hint">you can also play the game with number keys</p>
-      <div className="normal-grid">
-        <div className="grid">
+      <div className="normal-grid-container">
+        <div className="normal-grid">
           {board.grid.map((cell, index) => (
             <Cell
               value={cell}
               key={index}
               data-cell-number={index + 1}
-              className={
-                `cell` +
-                `${cell || board.winner ? " cell-deac" : ""}` +
-                `${cell ? ` cell-${cell}` : ""}` +
-                `${
-                  board.winner
-                    ? board.winningCells?.includes(index)
-                      ? ` winning-cell winning-cell-${cell}`
-                      : ``
-                    : ""
-                }`
-              }
+              className={clsx(
+                "cell",
+                (cell || board.winner) && "cell-deac",
+                cell && `cell-${cell}`,
+                board.winner &&
+                  board.winningCells?.includes(index) &&
+                  `winning-cell-${cell}`,
+              )}
               onClick={() => handleClick(index)}
             />
           ))}
         </div>
         <StateOfTheGame winner={board.winner} turn={turn} />
         <Button
-          btnType={"btn-reset" + (board.winner ? ` btn-big` : "")}
+          btnType={clsx('btn-reset', board.winner && 'btn-big')}
           onClick={resetTheGame}
         >
           Reset the game

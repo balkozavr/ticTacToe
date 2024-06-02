@@ -70,6 +70,7 @@ export const handleExpandedGridClick = (
     }
   }
 
+  //MAIN EXPANDED-GRID GAME LOGIC
   //check if cellIndex = boardIndex, if not deactivate the cell. if the activated cell is a winning cell, make all the cells active again. if the cell we are going to is a winning cell, active all other cells
   setGameState((prev) => ({
     ...prev,

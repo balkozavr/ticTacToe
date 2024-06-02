@@ -1,4 +1,5 @@
-import './StateOfTheGame.scss';
+import clsx from "clsx";
+import "./StateOfTheGame.scss";
 export const StateOfTheGame = ({ winner, turn }) => {
   return (
     <>
@@ -6,7 +7,9 @@ export const StateOfTheGame = ({ winner, turn }) => {
         {!winner ? (
           <>
             <span>
-              It's <span className={`state state-${turn}`}>{turn}</span>'s turn
+              It's{" "}
+              <span className={clsx("state", `state-${turn}`)}>{turn}</span>'s
+              turn
             </span>
           </>
         ) : (
@@ -15,7 +18,10 @@ export const StateOfTheGame = ({ winner, turn }) => {
               "Draw!"
             ) : (
               <>
-                <span className={`state state-${winner}`}>{winner}</span> won!
+                <span className={clsx("state", `state-${winner}`)}>
+                  {winner}
+                </span>{" "}
+                won!
               </>
             )}
           </>

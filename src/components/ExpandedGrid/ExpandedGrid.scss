@@ -1,4 +1,4 @@
-.expanded-grid {
+.expanded-grid-container {
 	width: 40%;
 	aspect-ratio: 1 / 1;
 	margin: 0 auto;
@@ -8,7 +8,7 @@
 	flex-direction: column;
 }
 
-.main-grid {
+.expanded-grid {
 	width: 90%;
 	aspect-ratio: 1 / 1;
 	display: grid;
@@ -16,11 +16,7 @@
 	overflow: hidden;
 }
 
-.main-grid .grid {
-	gap: 3%;
-}
-
-.main-grid .cell {
+.expanded-grid .cell {
 	border-radius: .5vw;
 	font-size: 2vw;
 }

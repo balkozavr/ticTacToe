@@ -6,6 +6,7 @@ import { checkTurn } from "../../helpers/checkTurn";
 import { StateOfTheGame } from "../UI/StateOfTheGame/StateOfTheGame";
 import { Button } from "../UI/Button/Button";
 import { checkWinningScenarios } from "../../helpers/checkWinningScenarios";
+import clsx from "clsx";
 
 const GRID_SIZE = 9;
 
@@ -47,31 +48,26 @@ export const ExpandedGrid = () => {
 
   return (
     <ExpandedGridContext.Provider value={{ mainGrid, setMainGrid }}>
-      <div className="expanded-grid">
-        <div className="main-grid">
+      <div className="expanded-grid-container">
+        <div className="expanded-grid">
           {mainGrid.boards.map((board, index) => (
             <Board
               boardIndex={index}
               key={index}
-              className={
-                `board board${index}` +
-                `${
-                  mainGrid.boards[index].active && !mainGrid.mainWinner
-                    ? " board-active"
-                    : ""
-                }` +
-                `${
-                  mainGrid.mainWinningCells.includes(index)
-                    ? ` board-winner-${board.winner}`
-                    : ""
-                }`
-              }
+              className={clsx(
+                `board board${index}`,
+                mainGrid.boards[index].active &&
+                  !mainGrid.mainWinner &&
+                  "board-active",
+                mainGrid.mainWinningCells.includes(index) &&
+                  `board-winner-${board.winner}`,
+              )}
             />
           ))}
         </div>
         <StateOfTheGame winner={mainGrid.mainWinner} turn={turn} />
         <Button
-          btnType={"btn-reset" + (mainGrid.mainWinner ? ` btn-big` : "")}
+          btnType={clsx("btn-reset", mainGrid.mainWinner && "btn-big")}
           onClick={resetTheGame}
         >
           Reset the game

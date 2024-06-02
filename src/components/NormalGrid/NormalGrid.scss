@@ -1,4 +1,4 @@
-.normal-grid {
+.normal-grid-container {
 	width: 40%;
 	aspect-ratio: 1 / 1;
 	margin: 0 auto;
@@ -8,8 +8,13 @@
 	flex-direction: column;
 }
 
-.grid {
+.normal-grid {
+	width: 80%;
+	aspect-ratio: 1 / 1;
+	display: grid;
 	gap: 3%;
+	grid-template-columns: repeat(3, 1fr);
+	overflow: hidden;
 }
 
 .normal-grid .cell {
@@ -36,15 +41,13 @@
 	cursor: auto;
 }
 
-.winning-cell {
-	color: white;
-}
-
 .winning-cell-x {
+	color: white;
 	background-color: var(--X);
 }
 
 .winning-cell-o {
+	color: white;
 	background-color: var(--O);
 }
 
