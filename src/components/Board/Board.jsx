@@ -1,12 +1,17 @@
 import "./Board.scss";
 import { Cell } from "../Cell/Cell";
 import { handleExpandedGridClick } from "../../helpers/handleExpandedGridClick";
+import { useContext } from "react";
+import { ExpandedGridContext } from "../ExpandedGrid/ExpandedGrid";
 
-export const Board = ({ gameState, setGameState, boardIndex, ...props }) => {
+export const Board = ({ boardIndex, ...props }) => {
+  const { mainGrid, setMainGrid } = useContext(ExpandedGridContext);
+
   const handleClick = (boardIndex, cellIndex) => {
-    handleExpandedGridClick(gameState, setGameState, boardIndex, cellIndex);
+    handleExpandedGridClick(mainGrid, setMainGrid, boardIndex, cellIndex);
   };
-  const board = gameState.boards[boardIndex];
+
+  const board = mainGrid.boards[boardIndex];
 
   return (
     <div {...props}>

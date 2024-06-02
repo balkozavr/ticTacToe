@@ -3,11 +3,11 @@ import { Cell } from "../Cell/Cell";
 import "./NormalGrid.scss";
 import { handleNormalGridClick } from "../../helpers/handleNormalGridClick";
 import { checkTurn } from "../../helpers/checkTurn";
-import { Grid } from "../Grid/Grid";
 import { initializeGrid } from "../../helpers/initializeGrid";
 import { checkWinningScenarios } from "../../helpers/checkWinningScenarios";
 import { StateOfTheGame } from "../UI/StateOfTheGame/StateOfTheGame";
 import { Button } from "../UI/Button/Button";
+import { useHandleKeyPresses } from "../../hooks/useHandleKeyPresses";
 
 const GRID_SIZE = 9;
 
@@ -33,17 +33,7 @@ export const NormalGrid = () => {
     }
   }, [board.grid, board.winner, board.turnCount]);
 
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key >= "1" && e.key <= "9") {
-        handleClick(e.key - 1);
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  });
+  useHandleKeyPresses(handleClick);
 
   const resetTheGame = () => {
     setBoard(initializeGrid(GRID_SIZE, "normal"));
@@ -54,12 +44,7 @@ export const NormalGrid = () => {
   return (
     <>
       <p className="hint">you can also play the game with number keys</p>
-      <Grid
-        gridType="normal-grid"
-        winner={board.winner}
-        turn={turn}
-        resetFunction={resetTheGame}
-      >
+      <div className="normal-grid">
         <div className="grid">
           {board.grid.map((cell, index) => (
             <Cell
@@ -89,7 +74,7 @@ export const NormalGrid = () => {
         >
           Reset the game
         </Button>
-      </Grid>
+      </div>
     </>
   );
 };

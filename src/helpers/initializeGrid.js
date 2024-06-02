@@ -3,12 +3,12 @@ import { createGridTemplate } from "./createGridTemplate";
 export const initializeGrid = (size, type) => {
   if (type === "expanded") {
     const boards = [];
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < size; i++) {
       boards.push({
-        active: true,
+        grid: createGridTemplate(size),
         winner: null,
         winningCells: [],
-        grid: createGridTemplate(size),
+        active: true,
       });
     }
     return {
@@ -21,8 +21,8 @@ export const initializeGrid = (size, type) => {
     return {
       grid: createGridTemplate(size),
       winner: null,
-      turnCount: 0,
       winningCells: [],
+      turnCount: 0,
     };
   } else {
     throw new Error("Invalid grid type");
