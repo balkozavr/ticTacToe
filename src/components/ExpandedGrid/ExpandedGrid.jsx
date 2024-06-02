@@ -6,6 +6,7 @@ import { checkTurn } from "../../helpers/checkTurn";
 import { StateOfTheGame } from "../UI/StateOfTheGame/StateOfTheGame";
 import { Button } from "../UI/Button/Button";
 import { checkWinningScenarios } from "../../helpers/checkWinningScenarios";
+import { handleExpandedGridClick } from "../../helpers/handleExpandedGridClick";
 import clsx from "clsx";
 
 const GRID_SIZE = 9;
@@ -46,13 +47,16 @@ export const ExpandedGrid = () => {
 
   const turn = checkTurn(mainGrid.turnCount);
 
+  const handleClick = (boardIndex, cellIndex) => {
+    handleExpandedGridClick(mainGrid, setMainGrid, boardIndex, cellIndex);
+  };
+
   return (
     <ExpandedGridContext.Provider value={{ mainGrid, setMainGrid }}>
       <div className="expanded-grid-container">
         <div className="expanded-grid">
           {mainGrid.boards.map((board, index) => (
-            <Board
-              boardIndex={index}
+            <div
               key={index}
               className={clsx(
                 `board board${index}`,
@@ -62,7 +66,15 @@ export const ExpandedGrid = () => {
                 mainGrid.mainWinningCells.includes(index) &&
                   `board-winner-${board.winner}`,
               )}
-            />
+            >
+              <Board
+                handleClick={handleClick}
+                board={board}
+                boardIndex={index}
+                className='grid'
+                key={index}
+              />
+            </div>
           ))}
         </div>
         <StateOfTheGame winner={mainGrid.mainWinner} turn={turn} />
