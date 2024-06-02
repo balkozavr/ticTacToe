@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Board } from "../Board/Board";
 import "./ExpandedGrid.scss";
 import { initializeGrid } from "../../helpers/initializeGrid";
@@ -10,8 +10,6 @@ import { handleExpandedGridClick } from "../../helpers/handleExpandedGridClick";
 import clsx from "clsx";
 
 const GRID_SIZE = 9;
-
-export const ExpandedGridContext = React.createContext();
 
 export const ExpandedGrid = () => {
   const [mainGrid, setMainGrid] = useState(
@@ -52,7 +50,6 @@ export const ExpandedGrid = () => {
   };
 
   return (
-    <ExpandedGridContext.Provider value={{ mainGrid, setMainGrid }}>
       <div className="expanded-grid-container">
         <div className="expanded-grid">
           {mainGrid.boards.map((board, index) => (
@@ -85,6 +82,5 @@ export const ExpandedGrid = () => {
           Reset the game
         </Button>
       </div>
-    </ExpandedGridContext.Provider>
   );
 };
