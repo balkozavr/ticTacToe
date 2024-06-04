@@ -8,21 +8,23 @@
 }
 :root {
   --hue: 225;
-  --suit: 80%, 50%;
+  --suit: 100%, 50%;
   --bg-transition: background-color 0.3s ease;
   --main-grid: white;
-  --O-hue: calc(var(--hue) - 50);
-  --X-hue: calc(var(--hue) + 130);
+  --O-hue: calc(var(--hue) - 30);
+  --X-hue: calc(var(--hue) + 120);
   --O: hsl(var(--O-hue), var(--suit));
   --X: hsl(var(--X-hue), var(--suit));
   --O-dark: hsl(var(--O-hue), 50%, 40%);
   --X-dark: hsl(var(--X-hue), 50%, 40%);
-  --highlight: hsl(var(--hue), 70%, 40%);
-  --background: hsl(var(--hue), 20%, 7%);
-  --active-board: hsl(var(--hue), 50%, 17%);
+  --highlight: hsl(var(--hue), 60%, 55%);
+  --background-1: hsl(var(--hue), 20%, 7%);
+  --background-2: hsl(var(--hue), 30%, 20%);
+  --active-board-X: hsla(var(--X-hue), 70%, 50%, 0.45);
+  --active-board-O: hsla(var(--O-hue), 70%, 50%, 0.3);
 }
 body {
-  background-color: var(--background);
+  background: linear-gradient(135deg, var(--background-1), var(--background-2));
   height: 100vh;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }

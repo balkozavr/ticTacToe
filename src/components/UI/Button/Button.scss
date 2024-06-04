@@ -6,7 +6,6 @@
   transition: var(--bg-transition);
   text-transform: uppercase;
   outline: none;
-
   &:hover {
     background-color: var(--highlight);
   }
@@ -16,32 +15,32 @@
   }
 
   &-game-mode {
-    font-size: 3.5vw;
-    padding: 1rem 2rem;
+    font-size: 5vmin;
+    padding: 2vmin 4vmin;
     border-radius: 1vw;
+    border-width: .5vmin;
   }
 
   &-back {
     position: absolute;
-    padding: 0.5rem 1rem;
-    font-size: 1vw;
-    top: 2vw;
-    left: 2vw;
-    border-radius: 0.25vw;
+    padding: 1vmin 1.4vmin;
+    font-size: 2vmin;
+    top: 5vmin;
+    left: 5vmin;
+    border-radius: .5vmin;
   }
 
   &-reset {
-    font-size: 1.25vw;
-    padding: 0.5rem 1rem;
+    font-size: 2.5vmin;
+    padding: 1vmin 2vmin;
     transition:
       font-size 0.5s ease,
       var(--bg-transition);
 
-    border-radius: 0.25rem;
+    border-radius: .5vmin;
   }
 
   &-big {
-    font-size: 200%;
+    font-size: 3.5vmin;
   }
 }
-

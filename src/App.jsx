@@ -10,12 +10,8 @@ export const App = () => {
     <div className="game">
       {menu === "menu" && (
         <>
-          <h1 className="main-title">
-            <span className="main-title-X">Tic</span>
-            <span>Tac</span>
-            <span className="main-title-O">Toe</span>
-          </h1>
-          <h2 className="subtitle">Choose the game mode:</h2>
+          <h1 className="main-title">TicTacToe</h1>
+          <h2 className="subtitle">Choose the game mode</h2>
           <div className="btn-container">
             <Button btnType="btn-game-mode" onClick={() => setMenu("normal")}>
               Normal
@@ -27,10 +23,7 @@ export const App = () => {
         </>
       )}
       {menu !== "menu" && (
-        <Button
-          btnType="btn-back"
-          onClick={() => setMenu("menu")}
-        >
+        <Button btnType="btn-back" onClick={() => setMenu("menu")}>
           Back to menu
         </Button>
       )}

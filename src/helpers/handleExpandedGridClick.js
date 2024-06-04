@@ -62,6 +62,7 @@ export const handleExpandedGridClick = (
             ? {
                 ...board,
                 winner: "draw",
+                winningCells: [0],
                 active: false,
               }
             : board,
@@ -85,15 +86,10 @@ export const handleExpandedGridClick = (
               ...board,
               active: true,
             }
-          : gameState.boards[cellIndex].winningCells.length === 0
-            ? {
-                ...board,
-                active: false,
-              }
-            : {
-                ...board,
-                active: true,
-              },
+          : {
+              ...board,
+              active: false,
+            },
     ),
   }));
 };

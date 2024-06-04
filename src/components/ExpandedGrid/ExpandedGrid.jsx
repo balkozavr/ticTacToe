@@ -20,6 +20,19 @@ export const ExpandedGrid = () => {
   };
 
   useEffect(() => {
+    if (
+      !mainGrid.mainWinner &&
+      mainGrid.boards.every((board) => !board.active)
+    ) {
+      setMainGrid((prevGameState) => ({
+        ...prevGameState,
+        boards: prevGameState.boards.map((board) => ({
+          ...board,
+          active: true,
+        })),
+      }));
+    }
+
     const [newWinningCells, winner] = checkWinningScenarios(
       mainGrid.boards.map((board) => board.winner),
     );
@@ -30,7 +43,7 @@ export const ExpandedGrid = () => {
         mainWinningCells: newWinningCells,
       }));
     }
-    //check for draw in the main grid]/
+    //check for draw in the main grid
     if (
       mainGrid.boards.every((board) => board.winner) &&
       !mainGrid.mainWinner
@@ -50,37 +63,40 @@ export const ExpandedGrid = () => {
   };
 
   return (
-      <div className="expanded-grid-container">
-        <div className="expanded-grid">
-          {mainGrid.boards.map((board, index) => (
-            <div
+    <div className="expanded-grid-container">
+      <div className="expanded-grid">
+        {mainGrid.boards.map((board, index) => (
+          <div
+            key={index}
+            className={clsx(
+              `board board${index}`,
+              mainGrid.boards[index].active &&
+                !mainGrid.mainWinner &&
+                (turn === "x"
+                  ? "board-active board-active-x"
+                  : "board-active board-active-o"),
+              mainGrid.mainWinningCells.includes(index) &&
+                `board-winner-${board.winner}`,
+            )}
+          >
+            <Board
+              aria-label={`Board ${index + 1}`}
+              handleClick={handleClick}
+              board={board}
+              boardIndex={index}
+              className="grid"
               key={index}
-              className={clsx(
-                `board board${index}`,
-                mainGrid.boards[index].active &&
-                  !mainGrid.mainWinner &&
-                  "board-active",
-                mainGrid.mainWinningCells.includes(index) &&
-                  `board-winner-${board.winner}`,
-              )}
-            >
-              <Board
-                handleClick={handleClick}
-                board={board}
-                boardIndex={index}
-                className='grid'
-                key={index}
-              />
-            </div>
-          ))}
-        </div>
-        <StateOfTheGame winner={mainGrid.mainWinner} turn={turn} />
-        <Button
-          btnType={clsx("btn-reset", mainGrid.mainWinner && "btn-big")}
-          onClick={resetTheGame}
-        >
-          Reset the game
-        </Button>
+            />
+          </div>
+        ))}
       </div>
+      <StateOfTheGame winner={mainGrid.mainWinner} turn={turn} />
+      <Button
+        btnType={clsx("btn-reset", mainGrid.mainWinner && "btn-big")}
+        onClick={resetTheGame}
+      >
+        Reset the game
+      </Button>
+    </div>
   );
 };

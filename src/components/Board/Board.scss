@@ -16,13 +16,37 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   width: 85%;
-  padding: 2.5%;
+  padding: 3%;
   gap: 3%;
   aspect-ratio: 1 / 1;
+  transition: var(--bg-transition);
+  border-radius: .25vw;
 }
 
-.board-active .grid {
-  background-color: var(--active-board);
+.board-active {
+  &-x .grid {
+    background-color: var(--active-board-X);
+
+    .cell:not(.cell-deac):hover {
+      background-color: var(--X);
+    }
+  }
+
+  &-o .grid {
+    background-color: var(--active-board-O);
+
+    .cell:not(.cell-deac):hover {
+      background-color: var(--O);
+    }
+  }
+}
+
+.board-active .cell:not(.cell-deac) {
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--highlight);
+  }
 }
 
 .board0,
@@ -54,7 +78,7 @@
   aspect-ratio: 1 / 1;
   display: grid;
   place-items: center;
-  border-radius: 1vw;
+  border-radius: 2.5vmin;
   transition: var(--bg-transition);
 }
 
@@ -78,13 +102,12 @@
 
 .board-win-symbol {
   line-height: 0;
-  transform: translateY(-1.25vw);
-  font-size: 10vw;
+  transform: translateY(-2vmin);
+  font-size: 20vmin;
   color: white;
   user-select: none;
 }
 
 .win-draw .board-win-symbol {
-  font-size: 7vw;
-  transform: translateY(-0.5vw);
+  transform: translateY(-0.5vmin);
 }

@@ -1,28 +1,21 @@
 .main-title {
   color: white;
   text-align: center;
-  font-size: 9vw;
+  font-size: 20vmin;
+  text-shadow: 0 0 10px var(--highlight);
+  line-height: 1;
 }
 
 .subtitle {
-  color: white;
-  font-size: 3vw;
-  margin-bottom: 3vw;
+  color: var(--highlight);
+  font-size: 6vmin;
+  margin-bottom: 1.5vmax;
   font-weight: bold;
-  font-style: italic;
-  text-shadow: 5px 5px 0 var(--highlight);
+  text-decoration:underline;
 }
 
 .btn-container {
   display: flex;
   justify-content: center;
   gap: 3vw;
-}
-
-.main-title-X {
-  color: var(--X);
-}
-
-.main-title-O {
-  color: var(--O);
 }

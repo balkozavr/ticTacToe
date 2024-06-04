@@ -10,6 +10,7 @@ export const Board = ({ board, boardIndex, handleClick, ...props }) => {
           value={cell}
           key={index}
           data-cell-number={index + 1}
+          aria-label={`Cell ${index + 1}`}
           className={clsx(
             "cell",
             (cell || board.winner) && "cell-deac",
