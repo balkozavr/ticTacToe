@@ -10,6 +10,7 @@ import { handleExpandedGridClick } from "../../helpers/handleExpandedGridClick";
 import clsx from "clsx";
 
 const GRID_SIZE = 9;
+const MIN_TURNS_TO_WIN = 17;
 
 export const ExpandedGrid = () => {
   const [mainGrid, setMainGrid] = useState(
@@ -33,6 +34,8 @@ export const ExpandedGrid = () => {
       }));
     }
 
+    if(mainGrid.turnCount < MIN_TURNS_TO_WIN) return;
+
     const [newWinningCells, winner] = checkWinningScenarios(
       mainGrid.boards.map((board) => board.winner),
     );
@@ -54,7 +57,7 @@ export const ExpandedGrid = () => {
         mainWinningCells: [],
       }));
     }
-  }, [mainGrid.boards, mainGrid.mainWinner]);
+  }, [mainGrid.boards, mainGrid.mainWinner, mainGrid.turnCount]);
 
   const turn = checkTurn(mainGrid.turnCount);
 

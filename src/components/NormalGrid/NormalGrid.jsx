@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Cell } from "../Cell/Cell";
 import "./NormalGrid.scss";
 import { handleNormalGridClick } from "../../helpers/handleNormalGridClick";
 import { checkTurn } from "../../helpers/checkTurn";
@@ -12,6 +11,7 @@ import clsx from "clsx";
 import { Board } from "../Board/Board";
 
 const GRID_SIZE = 9;
+const MIN_TURNS_TO_WIN = 5;
 
 export const NormalGrid = () => {
   const [board, setBoard] = useState(initializeGrid(GRID_SIZE, "normal"));
@@ -20,6 +20,7 @@ export const NormalGrid = () => {
     handleNormalGridClick(board, setBoard, cellIndex);
 
   useEffect(() => {
+    if(board.turnCount < MIN_TURNS_TO_WIN) return;
     //check winner
     const [newWinningCells, winner] = checkWinningScenarios(board.grid);
     if (newWinningCells) {
