@@ -23,3 +23,13 @@
 .board-active .cell:not(.cell-deac) {
   cursor: pointer;
 }
+
+.winning-cell-x {
+	color: white;
+	background-color: var(--X);
+}
+
+.winning-cell-o {
+	color: white;
+	background-color: var(--O);
+}
