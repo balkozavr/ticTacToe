@@ -1,8 +1,9 @@
+import { AnimateComponent } from "../components/UI/AnimateComponent";
 import { Button } from "../components/UI/Button/Button";
 import { Link } from "react-router-dom";
 export const HomePage = () => {
   return (
-    <>
+    <AnimateComponent>
       <h1 className="main-title">TicTacToe</h1>
       <h2 className="subtitle">Choose the game mode</h2>
       <div className="btn-container">
@@ -13,6 +14,6 @@ export const HomePage = () => {
           <Button btnType="btn-game-mode">Expanded</Button>
         </Link>
       </div>
-    </>
+    </AnimateComponent>
   );
 };

@@ -6,12 +6,10 @@ import { ExpandedGamePage } from "./pages/ExpandedGamePage";
 
 export const App = () => {
   return (
-    <div className="game">
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/normal' element={<NormalGamePage />} />
         <Route path='/expanded' element={<ExpandedGamePage />} />
       </Routes>
-    </div>
   );
 };
