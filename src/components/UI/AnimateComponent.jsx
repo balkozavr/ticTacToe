@@ -8,5 +8,5 @@ export const AnimateComponent = ({ children }) => {
       opacity: 1,
     }
   };
-  return <motion.div className="game" {...animation}>{children}</motion.div>;
+  return <motion.div {...animation}>{children}</motion.div>;
 };

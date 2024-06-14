@@ -12,7 +12,7 @@ import clsx from "clsx";
 const GRID_SIZE = 9;
 const MIN_TURNS_TO_WIN = 17;
 
-export const ExpandedGrid = () => {
+export const ExpandedGrid = ({ isSolo }) => {
   const [mainGrid, setMainGrid] = useState(
     initializeGrid(GRID_SIZE, "expanded"),
   );
@@ -34,7 +34,7 @@ export const ExpandedGrid = () => {
       }));
     }
 
-    if(mainGrid.turnCount < MIN_TURNS_TO_WIN) return;
+    if (mainGrid.turnCount < MIN_TURNS_TO_WIN) return;
 
     const [newWinningCells, winner] = checkWinningScenarios(
       mainGrid.boards.map((board) => board.winner),
@@ -94,12 +94,14 @@ export const ExpandedGrid = () => {
         ))}
       </div>
       <StateOfTheGame winner={mainGrid.mainWinner} turn={turn} />
-      <Button
-        btnType={clsx("btn-reset", mainGrid.mainWinner && "btn-big")}
-        onClick={resetTheGame}
-      >
-        Reset the game
-      </Button>
+      {isSolo && (
+        <Button
+          btnType={clsx("btn-reset", mainGrid.mainWinner && "btn-big")}
+          onClick={resetTheGame}
+        >
+          Reset the game
+        </Button>
+      )}
     </div>
   );
 };

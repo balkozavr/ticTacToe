@@ -1,15 +1,23 @@
 import "./App.scss";
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route } from "react-router-dom";
 import { HomePage } from "./pages/HomePage";
-import { NormalGamePage } from "./pages/NormalGamePage";
-import { ExpandedGamePage } from "./pages/ExpandedGamePage";
+import { SoloGamePage } from "./pages/SoloGamePage";
+import { Auth } from "./pages/Auth";
+import { Header } from "./components/Header/Header";
 
 export const App = () => {
   return (
-      <Routes>
-        <Route path='/' element={<HomePage />} />
-        <Route path='/normal' element={<NormalGamePage />} />
-        <Route path='/expanded' element={<ExpandedGamePage />} />
-      </Routes>
+    <>
+      <Header />
+      <div className="container">
+        <div className="main">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/auth" element={<Auth />} />
+            <Route path="/solo" element={<SoloGamePage />} />
+          </Routes>
+        </div>
+      </div>
+    </>
   );
 };

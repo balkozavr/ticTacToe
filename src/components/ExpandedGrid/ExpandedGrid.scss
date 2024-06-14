@@ -1,5 +1,5 @@
 .expanded-grid-container {
-	width: 85vmin;
+	width: 80vmin;
 	aspect-ratio: 1 / 1;
 	margin: 0 auto;
 	display: flex;
@@ -19,6 +19,14 @@
 .expanded-grid .cell {
 	border-radius: 1vmin;
 	font-size: 4vmin;
+}
+
+.game {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+	height: 100%;
 }
 
 @media screen and (width <= 1400px) {

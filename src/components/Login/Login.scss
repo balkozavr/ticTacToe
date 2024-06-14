@@ -1,0 +1,55 @@
+.auth {
+	background-color: transparent;
+  border: 0.2vw solid white;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 4vmin 6vmin;
+	border-radius: 3vmin;
+	transition: all 0.2s ease;
+	display: flex;
+	flex-direction: column;
+	gap: 2vmin;
+	font-size: 3vmin;
+	color: white;
+
+	.title {
+		text-transform: capitalize;
+		text-wrap: nowrap;
+	}
+
+	input, label {
+		display: block;
+		width: 100%;
+	}
+
+	button {
+		align-self: center;
+	}
+
+	label:last-of-type {
+		margin-bottom: 2vmin;
+	}
+
+	input {
+		padding: 1vmin 2vmin;
+		font-size: inherit;
+		border-radius: .5rem;
+		background-color: var(--foreground-dark);
+		border: none;
+		color: white;
+
+		&:focus-visible {
+      outline: 2px solid white;
+    }
+
+		&::placeholder {
+			color: var(--foreground-light);
+		}
+	}
+}
+
+dialog::backdrop {
+	background-color: rgb(255, 0, 0);
+}

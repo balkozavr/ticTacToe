@@ -9,12 +9,13 @@
 }
 
 .normal-grid {
-	width: 80%;
+	width: 75%;
 	aspect-ratio: 1 / 1;
 	display: grid;
 	gap: 3%;
 	grid-template-columns: repeat(3, 1fr);
 	overflow: hidden;
+	margin-bottom: 2vmin;
 }
 
 .normal-grid .cell {

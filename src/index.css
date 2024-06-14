@@ -4,7 +4,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  user-select: none;
 }
 :root {
   --hue: 225;
@@ -18,17 +17,26 @@
   --O-dark: hsl(var(--O-hue), 50%, 40%);
   --X-dark: hsl(var(--X-hue), 50%, 40%);
   --highlight: hsl(var(--hue), 60%, 55%);
+  --foreground: hsl(var(--hue), 40%, 35%);
+  --foreground-dark: hsl(var(--hue), 40%, 20%);
+  --foreground-light: hsl(var(--hue), 40%, 70%);
   --background-1: hsl(var(--hue), 20%, 7%);
   --background-2: hsl(var(--hue), 30%, 20%);
   --active-board-X: hsla(var(--X-hue), 70%, 50%, 0.45);
   --active-board-O: hsla(var(--O-hue), 70%, 50%, 0.3);
+  --header-height: 11vmin;
 }
 body {
   background: linear-gradient(135deg, var(--background-1), var(--background-2));
   height: 100vh;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 button {
   font: inherit;
+}
+
+.container {
+	width: 80%;
+	margin: 0 auto;
 }
