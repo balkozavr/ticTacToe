@@ -6,6 +6,8 @@
   transition: var(--bg-transition);
   text-transform: uppercase;
   outline: none;
+  text-wrap:nowrap;
+
   &:hover {
     background-color: var(--highlight);
   }
@@ -14,7 +16,7 @@
     background-color: var(--highlight);
   }
 
-  &-queue {
+  &-room {
     font-size: 5vmin;
     padding: 2vmin 4vmin;
     border-radius: 1vw;
@@ -63,6 +65,29 @@
     font-size: 2vmin;
     padding: 1vmin 1.5vmin;
     float: right;
+    border-radius: 1vmin;
+  }
+
+  &-window-back {
+    font-size: 3vmin;
+    padding: 1vmin 2vmin;
+    float: right;
+    border-radius: 1vmin;
+  }
+
+  &-join-room {
+    position: absolute;
+    right: 3vmin;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 75%;
+    padding: 1vmin 2vmin;
+    border-radius: 1vmin;
+  }
+
+  &-host {
+    margin-top: 3vmin;
+    padding: 1vmin 2vmin;
     border-radius: 1vmin;
   }
 }

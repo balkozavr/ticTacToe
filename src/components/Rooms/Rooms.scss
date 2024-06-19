@@ -1,0 +1,27 @@
+.rooms {
+  padding: 4vmin 0;
+  color: white;
+  font-size: 4vmin;
+}
+
+.rooms-title {
+  font-size: 250%;
+}
+
+.no-rooms {
+  margin-bottom: 4vmin;
+}
+
+.room {
+  position: relative;
+  border: .25vmin solid white;
+  border-radius: 1vmin;
+  padding: 2vmin;
+  margin: 2vmin 0;
+  font-size: 4vmin;
+  text-transform: capitalize;
+
+  span {
+    color: var(--foreground-light);
+  }
+}

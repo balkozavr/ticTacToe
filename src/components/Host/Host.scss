@@ -1,0 +1,38 @@
+.host {
+  padding: 4vmin 0;
+  color: white;
+  font-size: 4vmin;
+}
+
+.host-title {
+  font-size: 250%;
+}
+
+.host form {
+  input[type="text"],
+  label {
+    font-size: inherit;
+		display: block;
+  }
+	
+	label {
+		margin-right: 3vmin;
+	}
+
+  input[type="text"] {
+    width: fit-content;
+    padding: 1vmin 2vmin;
+    border-radius: 0.5rem;
+    background-color: var(--foreground-dark);
+    border: none;
+    color: white;
+
+    &:focus-visible {
+      outline: 2px solid white;
+    }
+
+    &::placeholder {
+      color: var(--foreground-light);
+    }
+  }
+}

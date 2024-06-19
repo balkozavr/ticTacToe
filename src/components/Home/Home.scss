@@ -23,7 +23,22 @@
   font-size: 5vmin;
   margin-bottom: 1.5vmax;
   font-weight: bold;
+
   a {
     color: var(--highlight);
   }
+
+  .ps-text {
+    color: var(--foreground-dark);
+    font-size: 50%;
+  }
 }
+
+
+
+.btn-container {
+  display: flex;
+  gap: 3vw;
+}
+
+
