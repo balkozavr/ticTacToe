@@ -1,7 +1,6 @@
 .expanded-grid-container {
-	width: 80vmin;
+	width: 70vmin;
 	aspect-ratio: 1 / 1;
-	margin: 0 auto;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -9,7 +8,7 @@
 }
 
 .expanded-grid {
-	width: 90%;
+	width: 100%;
 	aspect-ratio: 1 / 1;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
@@ -29,8 +28,27 @@
 	height: 100%;
 }
 
-@media screen and (width <= 1400px) {
-	.expanded-grid .cell {
-		font-size: 4vmin;
+.online-game-container {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.online-game {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 3vmin;
+
+	.chat, .players {
+		width: 25%;
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	.online-game {
+		flex-direction: column;
 	}
 }

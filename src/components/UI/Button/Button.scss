@@ -90,4 +90,14 @@
     padding: 1vmin 2vmin;
     border-radius: 1vmin;
   }
+
+  &-chat {
+    font-size: 2vmin;
+    padding: 1vmin 2vmin;
+    border-radius: 1vmin;
+    transition: var(--bg-transition);
+    &:hover {
+      background-color: var(--highlight);
+    }
+  }
 }

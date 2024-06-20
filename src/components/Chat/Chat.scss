@@ -1,0 +1,37 @@
+.chat {
+  display: flex;
+  flex-direction: column;
+	aspect-ratio: 3 / 5;
+  color: white;
+  border: 0.5vmin solid white;
+  border-radius: 3vmin;
+  padding: 3vmin;
+  gap: 2vmin;
+	
+  .chat-history {
+    padding: 1vmin;
+    flex: 1;
+  }
+
+  .send-container {
+    display: flex;
+    gap: 1vmin;
+  }
+
+  input[type="text"] {
+    font-size: 2vmin;
+    padding: 1vmin 2vmin;
+    border-radius: 0.5rem;
+    background-color: var(--foreground-dark);
+    border: none;
+    color: white;
+
+    &:focus-visible {
+      outline: 2px solid white;
+    }
+
+    &::placeholder {
+      color: var(--foreground-light);
+    }
+  }
+}

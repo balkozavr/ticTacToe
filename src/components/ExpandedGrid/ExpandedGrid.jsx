@@ -66,7 +66,7 @@ export const ExpandedGrid = ({ isSolo }) => {
   };
 
   return (
-    <div className="expanded-grid-container">
+    <div className='expanded-grid-container'>
       <div className="expanded-grid">
         {mainGrid.boards.map((board, index) => (
           <div
