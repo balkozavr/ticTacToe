@@ -4,11 +4,9 @@ import clsx from "clsx";
 
 export const Board = ({ board, boardIndex, handleClick, ...props }) => {
   const checkActive = (index) => {
-    return board.active === undefined
-      ? handleClick(index)
-      : handleClick(boardIndex, index);
+    return board.active && handleClick(boardIndex, index);
   };
-  if (!board.winner || board.active === undefined) {
+  if (!board.winner) {
     return (
       <div {...props}>
         {board.grid.map((cell, index) => (
