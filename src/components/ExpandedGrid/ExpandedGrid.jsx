@@ -8,6 +8,7 @@ import { Button } from "../UI/Button/Button";
 import { checkWinningScenarios } from "../../helpers/checkWinningScenarios";
 import { handleExpandedGridClick } from "../../helpers/handleExpandedGridClick";
 import clsx from "clsx";
+import { Timer } from "../UI/Timer/Timer";
 
 const GRID_SIZE = 9;
 const MIN_TURNS_TO_WIN = 17;
@@ -16,6 +17,8 @@ export const ExpandedGrid = ({ isSolo }) => {
   const [mainGrid, setMainGrid] = useState(
     initializeGrid(GRID_SIZE, "expanded"),
   );
+
+  const [timerRunning, setTimerRunning] = useState(true);
   const resetTheGame = () => {
     setMainGrid(initializeGrid(GRID_SIZE, "expanded"));
   };
@@ -67,6 +70,7 @@ export const ExpandedGrid = ({ isSolo }) => {
 
   return (
     <div className='expanded-grid-container'>
+      {!isSolo && <Timer running={timerRunning}/>}
       <div className="expanded-grid">
         {mainGrid.boards.map((board, index) => (
           <div

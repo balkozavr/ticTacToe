@@ -40,3 +40,10 @@ button {
 	width: 80%;
 	margin: 0 auto;
 }
+
+.animate {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}

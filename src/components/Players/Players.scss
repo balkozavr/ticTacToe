@@ -1,0 +1,37 @@
+.players {
+	color: white;
+	text-transform: uppercase;
+}
+
+.player {
+	display: flex;
+	gap: 1vmin;
+	align-items: center;
+
+	.player-suit {
+		font-size: 7vmin;
+		font-weight: bold;
+
+		&-X {
+			color: var(--X);
+		}
+
+		&-O {
+			color: var(--O);
+		}
+	}
+
+	.player-info {
+		display: flex;
+		flex-direction: column;
+
+		.player-name {
+			text-transform: capitalize;
+			font-size: 3vmin;
+		}
+
+		.player-winrate {
+			color: grey;
+		}
+	}
+}

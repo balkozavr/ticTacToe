@@ -1,16 +1,57 @@
 .chat {
   display: flex;
   flex-direction: column;
-	aspect-ratio: 3 / 5;
+  height: 80%;
+  aspect-ratio: 3 / 5;
   color: white;
   border: 0.5vmin solid white;
   border-radius: 3vmin;
   padding: 3vmin;
   gap: 2vmin;
-	
+
   .chat-history {
     padding: 1vmin;
     flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1vmin;
+
+    .message {
+      position: relative;
+      background-color: var(--X);
+      border-radius: 1.5vmin;
+      font-size: 3vmin;
+      padding: 1.5vmin 2vmin;
+      width: fit-content;
+      word-break: break-all;
+
+      &-time {
+        position: absolute;
+        bottom: 0.5vmin;
+        font-size: 1.25vmin;
+        color: whitesmoke;
+      }
+
+      &-you {
+        background-color: var(--X-dark);
+        align-self: flex-end;
+
+        .message-time {
+          right: 1vmin;
+        }
+      }
+
+      &-other {
+        background-color: var(--O-dark);
+        align-self: flex-start;
+        border-bottom-right-radius: 2.5vmin;
+
+        .message-time {
+          left: 1vmin;
+        }
+      }
+    }
   }
 
   .send-container {
