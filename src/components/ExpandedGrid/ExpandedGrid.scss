@@ -47,6 +47,26 @@
 	}
 }
 
+.winner-title {
+	font-weight: bold;
+	font-size: 125%;
+	line-height: 70%;
+}
+
+.winner-suit {
+	font-size: 150%;
+	line-height: 0;
+	margin-right: 1vmin;
+
+	&-x {
+		color: var(--X);
+	}
+
+	&-o {
+		color: var(--O);
+	}
+}
+
 @media screen and (max-width: 1000px) {
 	.online-game {
 		flex-direction: column;

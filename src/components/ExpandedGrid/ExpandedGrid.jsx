@@ -9,16 +9,17 @@ import { checkWinningScenarios } from "../../helpers/checkWinningScenarios";
 import { handleExpandedGridClick } from "../../helpers/handleExpandedGridClick";
 import clsx from "clsx";
 import { Timer } from "../UI/Timer/Timer";
+import { Modal } from "../Modal/Modal";
 
 const GRID_SIZE = 9;
 const MIN_TURNS_TO_WIN = 17;
 
 export const ExpandedGrid = ({ isSolo }) => {
+  const [timerRunning, setTimerRunning] = useState(true);
+
   const [mainGrid, setMainGrid] = useState(
     initializeGrid(GRID_SIZE, "expanded"),
   );
-
-  const [timerRunning, setTimerRunning] = useState(true);
   const resetTheGame = () => {
     setMainGrid(initializeGrid(GRID_SIZE, "expanded"));
   };
@@ -60,6 +61,9 @@ export const ExpandedGrid = ({ isSolo }) => {
         mainWinningCells: [],
       }));
     }
+
+    if(mainGrid.mainWinner) setTimerRunning(false);
+
   }, [mainGrid.boards, mainGrid.mainWinner, mainGrid.turnCount]);
 
   const turn = checkTurn(mainGrid.turnCount);
@@ -69,43 +73,65 @@ export const ExpandedGrid = ({ isSolo }) => {
   };
 
   return (
-    <div className='expanded-grid-container'>
-      {!isSolo && <Timer running={timerRunning}/>}
-      <div className="expanded-grid">
-        {mainGrid.boards.map((board, index) => (
-          <div
-            key={index}
-            className={clsx(
-              `board board${index}`,
-              mainGrid.boards[index].active &&
-                !mainGrid.mainWinner &&
-                (turn === "x"
-                  ? "board-active board-active-x"
-                  : "board-active board-active-o"),
-              mainGrid.mainWinningCells.includes(index) &&
-                `board-winner-${board.winner}`,
+    <>
+      {mainGrid.mainWinner && (
+        <Modal open>
+          <p>
+            {mainGrid.mainWinner === "draw" ? (
+              "Draw!"
+            ) : (
+              <div>
+                <span
+                  className={`winner-suit winner-suit-${mainGrid.mainWinner}`}
+                >
+                  {mainGrid.mainWinner}
+                </span>
+                Player
+                  <div className="winner-title">WON</div>
+              </div>
             )}
-          >
-            <Board
-              aria-label={`Board ${index + 1}`}
-              handleClick={handleClick}
-              board={board}
-              boardIndex={index}
-              className="grid"
-              key={index}
-            />
-          </div>
-        ))}
-      </div>
-      <StateOfTheGame winner={mainGrid.mainWinner} turn={turn} />
-      {isSolo && (
-        <Button
-          btnType={clsx("btn-reset", mainGrid.mainWinner && "btn-big")}
-          onClick={resetTheGame}
-        >
-          Reset the game
-        </Button>
+          </p>
+        </Modal>
       )}
-    </div>
+
+      <div className="expanded-grid-container">
+        {!isSolo && timerRunning && <Timer />}
+        <div className="expanded-grid">
+          {mainGrid.boards.map((board, index) => (
+            <div
+              key={index}
+              className={clsx(
+                `board board${index}`,
+                mainGrid.boards[index].active &&
+                  !mainGrid.mainWinner &&
+                  (turn === "x"
+                    ? "board-active board-active-x"
+                    : "board-active board-active-o"),
+                mainGrid.mainWinningCells.includes(index) &&
+                  `board-winner-${board.winner}`,
+              )}
+            >
+              <Board
+                aria-label={`Board ${index + 1}`}
+                handleClick={handleClick}
+                board={board}
+                boardIndex={index}
+                className="grid"
+                key={index}
+              />
+            </div>
+          ))}
+        </div>
+        <StateOfTheGame winner={mainGrid.mainWinner} turn={turn} />
+        {isSolo && (
+          <Button
+            btnType={clsx("btn-reset", mainGrid.mainWinner && "btn-big")}
+            onClick={resetTheGame}
+          >
+            Reset the game
+          </Button>
+        )}
+      </div>
+    </>
   );
 };

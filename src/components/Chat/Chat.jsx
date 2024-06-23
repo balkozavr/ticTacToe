@@ -6,6 +6,7 @@ import { useRef } from "react";
 export const Chat = () => {
   const [chatHitory, setChatHistory] = useState([]);
   const messageInput = useRef("");
+  const scrollDiv = useRef(null);
 
   const sendMesssage = (e) => {
     e.preventDefault();
@@ -20,6 +21,9 @@ export const Chat = () => {
     if (!message.text.trim()) return;
     setChatHistory([...chatHitory, message]);
     messageInput.current.value = "";
+    setTimeout(() => {
+      scrollDiv.current.scrollIntoView({ behavior: "smooth" });
+    }, 0);
   };
   return (
     <form className="chat" onSubmit={sendMesssage}>
@@ -33,6 +37,7 @@ export const Chat = () => {
             </div>
           );
         })}
+        <div ref={scrollDiv}></div>
       </div>
       <input
         maxLength="36"

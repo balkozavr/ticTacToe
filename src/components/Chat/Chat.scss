@@ -17,6 +17,10 @@
     flex-direction: column;
     gap: 1vmin;
 
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+
     .message {
       position: relative;
       background-color: var(--X);
