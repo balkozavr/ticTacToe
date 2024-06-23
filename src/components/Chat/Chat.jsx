@@ -5,6 +5,7 @@ import { useRef } from "react";
 
 export const Chat = () => {
   const [chatHitory, setChatHistory] = useState([]);
+  const [sender, setSender] = useState("you");
   const messageInput = useRef("");
   const scrollDiv = useRef(null);
 
@@ -12,7 +13,7 @@ export const Chat = () => {
     e.preventDefault();
     const message = {
       text: messageInput.current.value,
-      sender: "you",
+      sender: sender,
       time: new Date().toLocaleTimeString([], {
         hour: "2-digit",
         minute: "2-digit",
@@ -39,6 +40,13 @@ export const Chat = () => {
         })}
         <div ref={scrollDiv}></div>
       </div>
+      <Button
+        btnType="btn-sender"
+        type='button'
+        onClick={() => (setSender(sender === "you" ? "other" : "you"))}
+      >
+        text from: {sender}
+      </Button>
       <input
         maxLength="36"
         ref={messageInput}

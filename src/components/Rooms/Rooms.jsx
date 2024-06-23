@@ -5,26 +5,7 @@ import { Button } from "../UI/Button/Button";
 import { Link } from "react-router-dom";
 import { RoomButton } from "../NonUIButtons/RoomButton";
 
-const dummyRooms = [
-  {
-    id: 1,
-    name: "Room 1",
-    host: "Player 1",
-  },
-  {
-    id: 2,
-    name: "Room 2",
-    host: "Player 2",
-  },
-  {
-    id: 3,
-    name: "Room 3",
-    host: "Player 3",
-  },
-];
-
 export const Rooms = () => {
-  const [rooms, setRooms] = useState(dummyRooms);
 
   return (
     <div className="rooms">

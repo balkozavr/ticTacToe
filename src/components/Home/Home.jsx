@@ -17,13 +17,9 @@ export const Home = () => {
         </a>{" "}
         and practice in solo mode before playing online.
         <br />
-        <span className="ps-text">
-          Don't flame your opponents in chat, you just have skill issues
-        </span>
       </h2>
       <div className="btn-container">
         <RoomButton type="join" />
-        <RoomButton type="host" />
       </div>
     </Window>
   );

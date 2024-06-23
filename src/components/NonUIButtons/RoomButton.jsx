@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { Button } from "../UI/Button/Button";
 
-export const RoomButton = ({ type }) => {
+export const RoomButton = () => {
   return (
-    <Link to={type === 'join' ? '/rooms' : '/host'}>
-      <Button btnType="btn-room">{type} a room</Button>
+    <Link to="/online">
+      <Button btnType="btn-room">Play online</Button>
     </Link>
   );
 };

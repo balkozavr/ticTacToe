@@ -1,9 +1,17 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, redirect, useNavigate } from "react-router-dom";
 import { Button } from "../UI/Button/Button";
 import "./Header.scss";
+import { useContext } from "react";
+import { UserContext } from "../../UserContext";
 export const Header = () => {
+  const { setUsername } = useContext(UserContext);
   const addActive = (isActive) => (isActive ? "active-link" : "");
-
+  const navigate = useNavigate();
+  const logOut = () => {
+    localStorage.removeItem('username');
+    setUsername('');
+    navigate('/auth');
+  }
   return (
     <header className="header">
       <div className="container">
@@ -21,9 +29,7 @@ export const Header = () => {
             </NavLink>
           </nav>
           <div className="header-btn-container">
-            <NavLink to="/auth" tabIndex={-1}>
-              <Button btnType="btn-header">Log In</Button>
-            </NavLink>
+            <Button btnType="btn-header" onClick={logOut}>Log Out</Button>
           </div>
         </nav>
       </div>

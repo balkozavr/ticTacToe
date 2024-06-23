@@ -9,6 +9,14 @@
   padding: 3vmin;
   gap: 2vmin;
 
+  .chat-sender {
+    background-color: transparent;
+    border: .25vmin white solid;
+    color: white;
+    font-size: 3vmin;
+    padding: .5vmin 1vmin;
+  }
+
   .chat-history {
     padding: 1vmin;
     flex: 1;

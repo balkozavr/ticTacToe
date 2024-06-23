@@ -1,41 +1,56 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { UserContext } from "../../UserContext";
 import { Button } from "../UI/Button/Button";
 import "./Login.scss";
-
+import { fakeUsers } from "./fakeUsers";
+import { useNavigate } from "react-router-dom";
 export const Login = () => {
-  const [hasAccount, setHasAccount] = useState(false);
-
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const { setUsername: setLoggedIn } = useContext(UserContext);
+  const [error, setError] = useState(false);
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
+    const user = fakeUsers.find(
+      (user) => user.username === username && user.password === password,
+    );
+    if (!user) {
+      setError(true);
+      return;
+    }
+    setLoggedIn(user.username);
+    localStorage.setItem('username', user.username);
+    navigate('/');
   };
   return (
     <>
       <form className="auth" onSubmit={handleSubmit}>
-        <h1 className="title">
-          {hasAccount ? "Welcome back!" : "Create an account"}
-        </h1>
-        <label>
+        <h1 className="title">Welcome back!</h1>
+        <label className={error && 'error'}>
           Username
-          <input type="text" />
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => {
+              setUsername(e.target.value);
+              setError(false);
+            }}
+          />
         </label>
-        <label>
+        <label className={error && 'error'}>
           Password
-          <input type="password" />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              setError(false);
+            }}
+          />
         </label>
-        {!hasAccount && (
-          <label>
-            Confirm your password<input type="password"></input>
-          </label>
-        )}
         <Button btnType={"btn-form"} type="submit">
-          {hasAccount ? "Sign In" : "Sign Up"}
-        </Button>
-        <Button
-          btnType={"btn-form btn-small"}
-          type="reset"
-          onClick={() => setHasAccount(!hasAccount)}
-        >
-          {hasAccount ? "don't" : "already"} have an account?
+          Sign Up
         </Button>
       </form>
     </>

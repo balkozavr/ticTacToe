@@ -24,6 +24,16 @@
 		width: 100%;
 	}
 
+	label.error {
+		input {
+			outline: red .25vmin solid;
+		}
+		&::after {
+			content: "Wrong credentials	";
+			color: red;
+		}
+	}
+
 	button {
 		align-self: center;
 	}
